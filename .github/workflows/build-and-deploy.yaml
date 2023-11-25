@@ -30,6 +30,7 @@ jobs:
     
         - name: Install Dependencies
           run: npm install
+          working-directory: wdwebsolutions/
     
         - name: Install Angular CLI
           run: npm install -g @angular/cli
