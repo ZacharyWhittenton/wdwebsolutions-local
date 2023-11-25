@@ -25,11 +25,11 @@ jobs:
     
         # Uncomment and update if a specific Node version is required
         - uses: actions/setup-node@v2
-          with:
-            node-version: '16'
+        #  with:
+        #    node-version: '16'
     
         - name: Install Dependencies
-          run: npm install
+          run: npm ci
           working-directory: wdwebsolutions/
     
         - name: Install Angular CLI
