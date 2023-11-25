@@ -9,7 +9,7 @@ jobs:
         env:
             BUCKET: wdwebsolutions.com
             DIST: dist/wdwebsolutions
-            region: us-east-1
+            REGION: us-east-1
             DIST_ID: E5R6IPQNGNHV1
         
         steps:
