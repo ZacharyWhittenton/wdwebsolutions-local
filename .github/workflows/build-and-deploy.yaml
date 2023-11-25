@@ -36,7 +36,8 @@ jobs:
           run: npm install -g @angular/cli
     
         - name: Build Angular App
-          run: ng build --prod
+          run: ng build -c production
+          working-directory: wdwebsolutions/
     
         - name: Copy files to the production website with the AWS CLI
           run: |
