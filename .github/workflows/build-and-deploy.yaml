@@ -36,7 +36,7 @@ jobs:
           run: npm install -g @angular/cli
     
         - name: Build Angular App
-          run: ng build -c production
+          run: ng build --prod
     
         - name: Copy files to the production website with the AWS CLI
           run: |
