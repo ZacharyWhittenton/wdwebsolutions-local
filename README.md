@@ -16,3 +16,5 @@ Repo for the WD Web Solutions Angular Website
 - Created private S3 bucket wdwebsolutions.com to store website files
 - Created Cloudfront distribution to store caches of S3 bucket at edge locations
 - Created Privilege "WDWebSolutionsS3Access" which grants access to S3 bucket and Cloudfront distribution invalidations to invalidate cache
+- DevOps settings based off of https://antonputra.com/amazon/deploy-react-to-s3-and-cloudfront/
+  - Had to adjust .yaml file to work with Angular instead of React
