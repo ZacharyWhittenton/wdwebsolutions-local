@@ -10,3 +10,6 @@ Repo for the WD Web Solutions Angular Website
   - Cloudfront allows for HTTPS encryption when accessing the site
   - Extremely cheap compared to hosting an actual Angular server
   - Cloudfront caches the files from S3 - we need to invalidate this cache on every git push so that the new files will be served to end users
+
+## DevOps
+- Created IAM User
