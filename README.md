@@ -12,4 +12,7 @@ Repo for the WD Web Solutions Angular Website
   - Cloudfront caches the files from S3 - we need to invalidate this cache on every git push so that the new files will be served to end users
 
 ## DevOps
-- Created IAM User
+- Created IAM User "wdwebsolutions-website-github-actions" to handle github actions for CI/CD deployment
+- Created private S3 bucket wdwebsolutions.com to store website files
+- Created Cloudfront distribution to store caches of S3 bucket at edge locations
+- Created Privilege "WDWebSolutionsS3Access" which grants access to S3 bucket and Cloudfront distribution invalidations to invalidate cache
