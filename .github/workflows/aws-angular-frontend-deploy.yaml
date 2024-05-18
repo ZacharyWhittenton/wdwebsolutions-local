@@ -11,6 +11,7 @@ jobs:
             DIST: dist/wdwebsolutions
             REGION: us-east-1
             DIST_ID: E5R6IPQNGNHV1
+            WD: wdwebsolutions/ # Working directory of project
         
         steps:
         - name: Checkout
@@ -32,14 +33,14 @@ jobs:
           run: |
             node --version
             npm ci
-          working-directory: wdwebsolutions/
+          working-directory: ${{ env.WD }}
     
         - name: Install Angular CLI
           run: npm install -g @angular/cli
     
         - name: Build Angular App
           run: ng build -c production
-          working-directory: wdwebsolutions/
+          working-directory: ${{ env.WD }}
     
 
         - name: Invalidate CloudFront Distribution
@@ -52,7 +53,7 @@ jobs:
           run: |
             aws s3 sync --delete ${{ env.DIST }} s3://${{ env.BUCKET }}
           # Trying with admin access
-          working-directory: wdwebsolutions/
+          working-directory: ${{ env.WD }}
           
     
         
