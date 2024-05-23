@@ -8,10 +8,10 @@ jobs:
         runs-on: ubuntu-latest
         env:
             BUCKET: wdwebsolutions.com
-            DIST: dist/wdwebsolutions
+            DIST: dist/client
             REGION: us-east-1
             DIST_ID: E5R6IPQNGNHV1
-            WD: wdwebsolutions/ # Working directory of project
+            WD: client/ # Working directory of project
         
         steps:
         - name: Checkout
