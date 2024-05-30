@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ButtonComponent } from './shared/button/button.component'; 
 
 import { ToolbarModule } from 'primeng/toolbar';
 import { AvatarModule } from 'primeng/avatar'; 
@@ -17,9 +18,10 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    
 
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,6 +29,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     AvatarModule,
     ButtonModule,
     SplitButtonModule,
+    ButtonComponent,
   ],
 
   providers: [

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-button',
-  standalone: true,
-  imports: [],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss'
+  styleUrls: ['./button.component.scss'],
+  standalone: true,
+  imports: [ButtonModule] // Import the PrimeNG ButtonModule here
 })
-export class ButtonComponent {
-
-}
+export class ButtonComponent { }
