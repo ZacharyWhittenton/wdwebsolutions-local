@@ -1,14 +1,19 @@
 <p-toolbar 
     styleClass="bg-gray-900 shadow-2" 
-    [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))' }">
-        <ng-template pTemplate="start">
-            <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
-        </ng-template>
+    [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to right, #f2f2f2, #d9d9d9)' }">
+    <ng-template pTemplate="start">
+        <div style="width: 100px; height: auto;">
+            <img src="assets/images/joe_biden_wake_up.svg" alt="Your SVG Image" style="width: 100%; height: auto;">
+        </div>
+    </ng-template>
+    
+        
         <ng-template pTemplate="center">
             <div class="flex flex-wrap align-items-center gap-3">
                 <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
                     <i class="pi pi-home text-2xl"></i>
                 </button>
+                
                 <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
                     <i class="pi pi-user text-2xl"></i>
                 </button>
