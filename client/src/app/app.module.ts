@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ButtonComponent } from './shared/button/button.component'; 
 
 import { ToolbarModule } from 'primeng/toolbar';
 import { AvatarModule } from 'primeng/avatar'; 
@@ -16,17 +18,24 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    
 
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     ToolbarModule,
     AvatarModule,
     ButtonModule,
-    SplitButtonModule
+    SplitButtonModule,
+    ButtonComponent,
   ],
-  providers: [],
+
+  providers: [
+    provideAnimations()
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
