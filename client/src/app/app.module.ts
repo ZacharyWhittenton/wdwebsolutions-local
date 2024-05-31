@@ -17,6 +17,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button'; 
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { CardModule } from 'primeng/card';
+import { HomeHeroComponent } from './home/home-hero/home-hero.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CardModule } from 'primeng/card';
     CardComponent,
     BackgroundGreyComponent,
     BackgroundWhiteComponent,
+    HomeHeroComponent
   ],
   exports: [
   ],
