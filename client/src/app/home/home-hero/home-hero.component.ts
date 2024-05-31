@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HomeHeroComponent {
 
+  scrollToNextElement() {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  }
 }

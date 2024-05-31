@@ -1,1 +1,12 @@
-<p>home-hero works!</p>
+<!-- hero.component.html -->
+<section class="hero flex items-center justify-center h-screen bg-gradient-to-b from-blue-100 to-white relative text-center">
+    <div class="hero-content p-8">
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-800">Your Vision, Our Creation</h1>
+      <p class="mt-4 text-lg md:text-2xl text-gray-600">Transforming ideas into reality with innovative web solutions.</p>
+      <button pButton class="p-button p-component p-button-primary mt-6" routerLink="/contact">Get in Touch</button>
+      <div class="scroll-note mt-8 text-lg text-gray-700">Don't believe us? Let us convince you</div>
+      <div class="scroll-btn absolute bottom-8 w-full flex justify-center">
+        <i class="pi pi-chevron-down text-4xl animate-bounce cursor-pointer" (click)="scrollToNextElement()"></i>
+      </div>
+    </div>
+  </section>
