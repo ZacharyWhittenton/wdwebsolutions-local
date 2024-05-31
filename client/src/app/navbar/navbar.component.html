@@ -1,8 +1,7 @@
-<!-- navbar.component.html -->
-<nav class="navbar fixed w-full top-0 left-0 bg-white shadow-lg transition-transform duration-300 ease-in-out">
+<nav class="navbar fixed w-full top-0 left-0 bg-white shadow-lg transition-transform duration-300 ease-in-out z-50" [ngClass]="{'hidden': navbarHidden}">
     <div class="container mx-auto p-4 flex justify-between items-center">
       <div class="logo">
-        <img src="assets/images/joe_biden_wake_up.svg" alt="Logo" style="width: 100%; height: 50px;">
+        <a routerLink="/">Logo</a>
       </div>
       <div class="nav-links">
         <a routerLink="/" class="mr-4">Home</a>
@@ -11,5 +10,4 @@
       </div>
     </div>
   </nav>
-  
   

@@ -3,7 +3,7 @@ import { Component, HostListener } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
   lastScrollTop = 0;
@@ -11,7 +11,8 @@ export class NavbarComponent {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
-    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const currentScrollTop =
+      window.pageYOffset || document.documentElement.scrollTop;
     if (currentScrollTop > this.lastScrollTop) {
       // Scrolling down
       this.navbarHidden = true;

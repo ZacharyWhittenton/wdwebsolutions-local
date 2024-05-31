@@ -1,8 +1,12 @@
 /* navbar.component.css */
 .navbar {
     transform: translateY(0);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 1;
+    z-index: 50;
   }
   .navbar.hidden {
     transform: translateY(-100%);
+    opacity: 0;
   }
   
