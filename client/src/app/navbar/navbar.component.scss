@@ -1,0 +1,8 @@
+/* navbar.component.css */
+.navbar {
+    transform: translateY(0);
+  }
+  .navbar.hidden {
+    transform: translateY(-100%);
+  }
+  
