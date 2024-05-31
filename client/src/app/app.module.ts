@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ButtonComponent } from './shared/button/button.component'; 
 import { CardComponent } from './shared/card/card.component';
 import { BackgroundGreyComponent } from './shared/background-grey/background-grey.component';
+import { BackgroundWhiteComponent } from './shared/background-white/background-white.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +38,7 @@ import { CardModule } from 'primeng/card';
     CardModule,
     CardComponent,
     BackgroundGreyComponent,
+    BackgroundWhiteComponent,
   ],
   exports: [
   ],
