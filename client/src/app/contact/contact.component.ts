@@ -13,6 +13,6 @@ export class ContactComponent {
   constructor() { }
 
   sendEmail() {
-    window.location.href = 'mailto:zachw@wdwebsolutions.com'; // Replace with your email
+    window.location.href = 'mailto:zachw@wdwebsolutions.com,derekd@wdwebsolutions'; // Replace with your email
   }
 }
