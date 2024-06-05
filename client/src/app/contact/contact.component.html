@@ -1,1 +1,15 @@
-<p>contact works!</p>
+<div class="container">
+  <p-card header="Contact Us" [style]="{ width: '360px' }" class="text-center mt-4">
+    <ng-template pTemplate="header">
+      <!-- You can optionally add an image or additional header content here -->
+    </ng-template>
+    <p>
+      If you have any questions or inquiries, please feel free to send us an email.
+    </p>
+    <ng-template pTemplate="footer">
+      <div class="flex gap-3 mt-1">
+        <button pButton type="button" label="Send Email" class="w-full" styleClass="w-full" (click)="sendEmail()" style="width: 100%;"></button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

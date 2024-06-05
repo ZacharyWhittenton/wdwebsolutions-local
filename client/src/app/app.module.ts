@@ -9,6 +9,7 @@ import { ButtonComponent } from './shared/button/button.component';
 import { CardComponent } from './shared/card/card.component';
 import { BackgroundGreyComponent } from './shared/background-grey/background-grey.component';
 import { BackgroundWhiteComponent } from './shared/background-white/background-white.component';
+import { ContactComponent } from './contact/contact.component'; // Import the ContactComponent
 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,9 @@ import { HomeHeroComponent } from './home/home-hero/home-hero.component';
     CardComponent,
     BackgroundGreyComponent,
     BackgroundWhiteComponent,
-    HomeHeroComponent
+    HomeHeroComponent,
+    ContactComponent
+    
   ],
   exports: [
   ],
