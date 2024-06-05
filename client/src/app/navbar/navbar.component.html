@@ -1,0 +1,16 @@
+<nav class="navbar fixed w-full top-0 left-0 bg-white shadow-lg transition-transform duration-300 ease-in-out z-50" [ngClass]="{'hidden': navbarHidden}">
+  <div class="container mx-auto p-4 flex justify-between items-center">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/images/ShortSticker1.png" alt="Logo" class="logo-image">
+      </a>
+    </div>
+    
+    <div class="nav-links">
+      <a routerLink="/" class="mr-4">Home</a>
+      <!-- <a routerLink="/about" class="mr-4">About</a> -->
+      <a href="javascript:void(0)" class="mr-4" (click)="scrollToNextElement()">Contact</a>
+
+    </div>
+  </div>
+</nav>

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer reset, primeng;
+
+@layer reset{
+    button{
+        &:focus{
+            box-shadow: none;
+        }
+    }
+}
+
+/* No padding needed for main content */
+.main-content {
+    position: relative;
+    top: 0;
+  }
