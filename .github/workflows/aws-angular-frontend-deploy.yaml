@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             BUCKET: wdwebsolutions.com
-            DIST: dist/client
+            DIST: dist/client/browser
             REGION: us-east-1
             DIST_ID: E5R6IPQNGNHV1
             WD: client/ # Working directory of project
