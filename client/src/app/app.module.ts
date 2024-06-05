@@ -19,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { CardModule } from 'primeng/card';
 import { HomeHeroComponent } from './home/home-hero/home-hero.component';
+import { WhyWebsiteComponent } from './home/why-website/why-website.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,12 @@ import { HomeHeroComponent } from './home/home-hero/home-hero.component';
     BackgroundGreyComponent,
     BackgroundWhiteComponent,
     HomeHeroComponent,
+<<<<<<< HEAD
     ContactComponent
     
+=======
+    WhyWebsiteComponent
+>>>>>>> f41ae88 (Fixed width bug on home page and started adding "why us" section on home page)
   ],
   exports: [
   ],
