@@ -43,12 +43,8 @@ import { WhyWebsiteComponent } from './home/why-website/why-website.component';
     BackgroundGreyComponent,
     BackgroundWhiteComponent,
     HomeHeroComponent,
-<<<<<<< HEAD
-    ContactComponent
-    
-=======
+    ContactComponent,
     WhyWebsiteComponent
->>>>>>> f41ae88 (Fixed width bug on home page and started adding "why us" section on home page)
   ],
   exports: [
   ],
