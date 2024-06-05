@@ -22,4 +22,10 @@ export class NavbarComponent {
     }
     this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
   }
+  scrollToNextElement() {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  }
 }
