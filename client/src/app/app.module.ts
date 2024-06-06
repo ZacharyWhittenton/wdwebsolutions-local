@@ -20,12 +20,14 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { CardModule } from 'primeng/card';
 import { HomeHeroComponent } from './home/home-hero/home-hero.component';
 import { WhyWebsiteComponent } from './home/why-website/why-website.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    
     
 
   ],
@@ -44,7 +46,8 @@ import { WhyWebsiteComponent } from './home/why-website/why-website.component';
     BackgroundWhiteComponent,
     HomeHeroComponent,
     ContactComponent,
-    WhyWebsiteComponent
+    WhyWebsiteComponent,
+    FooterComponent,
   ],
   exports: [
   ],
