@@ -21,6 +21,8 @@ import { CardModule } from 'primeng/card';
 import { HomeHeroComponent } from './home/home-hero/home-hero.component';
 import { WhyWebsiteComponent } from './home/why-website/why-website.component';
 import { FooterComponent } from './footer/footer.component';
+import { OrganizationChartModule } from 'primeng/organizationchart';
+import { SplitterModule } from 'primeng/splitter';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { FooterComponent } from './footer/footer.component';
     ContactComponent,
     WhyWebsiteComponent,
     FooterComponent,
+    OrganizationChartModule,
+    SplitterModule,
   ],
   exports: [
   ],

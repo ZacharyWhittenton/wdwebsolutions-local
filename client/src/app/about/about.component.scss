@@ -1,0 +1,34 @@
+.chart-container {
+    margin-top: 100px; /* Adjust the value as needed for the desired spacing */
+  }
+  
+  .hero {
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  }
+
+/* Custom styles for the organization chart */
+p-organizationchart {
+    border: 1px solid black; /* Add a black border around the entire organization chart */
+  }
+  
+  p-organizationchart-table {
+    border-collapse: collapse; /* Collapse borders of the table */
+  }
+  
+  p-organizationchart-nodes {
+    border: 1px solid black; /* Add a black border around each node */
+    padding: 10px; /* Add padding to the nodes for spacing */
+  }
+  
+  p-organizationchart-lines {
+    position: relative; /* Ensure connector lines are positioned relative to the nodes */
+  }
+  
+  p-organizationchart-line-right,
+  p-organizationchart-line-left,
+  p-organizationchart-line-top {
+    border: 1px solid black; /* Add black borders to the connector lines */
+  }
+  
+  /* Optionally, you can customize the border style and width as needed */
+  
