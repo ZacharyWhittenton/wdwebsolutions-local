@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { OrganizationChartModule } from 'primeng/organizationchart';
+import { DividerModule } from 'primeng/divider';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [OrganizationChartModule],
+  imports: [OrganizationChartModule,DividerModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

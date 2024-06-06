@@ -23,6 +23,7 @@ import { WhyWebsiteComponent } from './home/why-website/why-website.component';
 import { FooterComponent } from './footer/footer.component';
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { SplitterModule } from 'primeng/splitter';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,8 @@ import { SplitterModule } from 'primeng/splitter';
     FooterComponent,
     OrganizationChartModule,
     SplitterModule,
+    DividerModule
+    
   ],
   exports: [
   ],

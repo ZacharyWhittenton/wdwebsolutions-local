@@ -31,4 +31,31 @@ p-organizationchart {
   }
   
   /* Optionally, you can customize the border style and width as needed */
+  .content-wrapper {
+    display: flex;
+    align-items: center; /* Vertically align content */
+    margin-bottom: 20px; /* Add bottom margin for spacing between sections */
+  }
   
+  .content-wrapper p {
+    margin: 0; /* Reset margin for <p> elements */
+    padding: 10px;
+  }
+  
+  .content-wrapper p-divider {
+    margin: 0 10px; /* Adjust horizontal margin for <p-divider> elements */
+  }
+  .bg-blue-500 {
+    background-color: #4299e1; /* Tailwind CSS blue-500 color */
+  }
+  
+  .text-dark-blue {
+    color: #0d47a1;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
