@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { OrganizationChartModule } from 'primeng/organizationchart';
 import { DividerModule } from 'primeng/divider';
+
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [OrganizationChartModule,DividerModule],
+  imports: [OrganizationChartModule, DividerModule],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
   data: any[] = [
@@ -22,14 +23,12 @@ export class AboutComponent {
           children: [
             {
               label: 'Co - Owner',
-              data: {  }
+              data: {}
             },
             {
-
               label: 'Lead Developer',
-              data: {  }
+              data: {}
             }
-            
           ]
         },
         {
@@ -39,11 +38,11 @@ export class AboutComponent {
           children: [
             {
               label: 'Co - Owner',
-              data: {  }
+              data: {}
             },
             {
               label: 'Senior Developer',
-              data: {  }
+              data: {}
             }
           ]
         }

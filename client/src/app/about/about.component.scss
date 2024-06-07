@@ -1,61 +1,88 @@
 .chart-container {
     margin-top: 100px; /* Adjust the value as needed for the desired spacing */
-  }
-  
-  .hero {
+}
+
+.hero {
     background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-  }
+}
 
 /* Custom styles for the organization chart */
 p-organizationchart {
     border: 1px solid black; /* Add a black border around the entire organization chart */
-  }
-  
-  p-organizationchart-table {
+}
+
+p-organizationchart-table {
     border-collapse: collapse; /* Collapse borders of the table */
-  }
-  
-  p-organizationchart-nodes {
+}
+
+p-organizationchart-nodes {
     border: 1px solid black; /* Add a black border around each node */
     padding: 10px; /* Add padding to the nodes for spacing */
-  }
-  
-  p-organizationchart-lines {
+}
+
+p-organizationchart-lines {
     position: relative; /* Ensure connector lines are positioned relative to the nodes */
-  }
-  
-  p-organizationchart-line-right,
-  p-organizationchart-line-left,
-  p-organizationchart-line-top {
+}
+
+p-organizationchart-line-right,
+p-organizationchart-line-left,
+p-organizationchart-line-top {
     border: 1px solid black; /* Add black borders to the connector lines */
-  }
-  
-  /* Optionally, you can customize the border style and width as needed */
-  .content-wrapper {
+}
+
+/* Optionally, you can customize the border style and width as needed */
+.section-wrapper {
     display: flex;
-    align-items: center; /* Vertically align content */
-    margin-bottom: 20px; /* Add bottom margin for spacing between sections */
-  }
-  
-  .content-wrapper p {
-    margin: 0; /* Reset margin for <p> elements */
-    padding: 10px;
-  }
-  
-  .content-wrapper p-divider {
-    margin: 0 10px; /* Adjust horizontal margin for <p-divider> elements */
-  }
-  .bg-blue-500 {
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 75vh; /* Adjust the height as needed */
+    padding: 20px; /* Add padding around the section */
+    margin-top: 50px; /* Adjust the value as needed to lower the section */
+}
+
+.content-wrapper {
+    width: 100%; /* Make the content wrapper take the full width */
+    max-width: 1200px; /* Optional: limit the max width for better readability */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    padding: 20px; /* Add padding to create space around the content */
+    border: 1px solid black; /* Add border to each column */
+    margin: 10px; /* Add margin between columns */
+    text-align: center; /* Center text within the column */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column-title {
+    font-size: 24px; /* Adjust title size as needed */
+    font-weight: bold;
+    margin-bottom: 10px; /* Space between title and paragraph */
+}
+
+.headshot {
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the entire circular area */
+    margin-bottom: 10px; /* Space between the image and the title */
+}
+
+.bg-blue-500 {
     background-color: #4299e1; /* Tailwind CSS blue-500 color */
-  }
-  
-  .text-dark-blue {
+}
+
+.text-dark-blue {
     color: #0d47a1;
-  }
-  
-  .icon-container {
+}
+
+.icon-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-  }
+}
