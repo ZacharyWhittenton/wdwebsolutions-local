@@ -1,0 +1,12 @@
+{
+  "lambda_function_name": "wdwebsolutions-contact-backend",
+  "region": "us-east-2",
+  "account_id": "767688909304",
+  "email_domain": "wdwebsolutions.com",
+  "sending_email": "sales@wdwebsolutions.com",
+  "hosted_zone_id": "Z07893332XYSDHOUQRRSQ",
+  "lambdaExecRoleName": "wdwebsolutions-contact-backend-exec-role",
+  "lambda_handler": "main.main",
+  "lambda_code_folder":"./lambda_start_code",
+  "github_actions_user_username":"wdws-lambda-github-actions-user"
+}

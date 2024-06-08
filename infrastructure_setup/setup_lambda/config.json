@@ -1,9 +1,0 @@
-{
-  "lambda_function_name": "myLambdaFunction",
-  "region": "us-west-2",
-  "account_id": "123456789012",
-  "email_domain": "wdwebsolutions.com",
-  "sending_email": "no-reply@wdwebsolutions.com",
-  "hosted_zone_id": "Z1A2BC3D4E5F6G",
-  "lambdaExecRoleName": "lambdaExecRole"
-}
