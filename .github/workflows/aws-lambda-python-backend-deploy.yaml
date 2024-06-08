@@ -37,8 +37,6 @@ jobs:
     needs: run-lambda-tests
     runs-on: ubuntu-latest
     name: Deploy Lambda Function
-    env:
-      AWS_REGION: 'us-east-1' # AWS lambda region
     steps:
       - uses: actions/checkout@v2
       - name: Configure AWS credentials
