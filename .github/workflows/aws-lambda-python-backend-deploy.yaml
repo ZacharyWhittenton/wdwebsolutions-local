@@ -13,7 +13,6 @@ env:
   AWS_REGION: 'us-east-2' # Define AWS region here
   LAMBDA_FUNCTION_NAME: 'wdwebsolutions-contact-backend-4e93dbe' # Lambda function name
   LAMBDA_CODE_PATH: 'lambda' # Path to the Lambda function code
-  LAMBDA_AWS_ACCESS_KEY_ID: ${{ vars.LAMBDA_AWS_ACCESS_KEY_ID }}
 
 jobs:
   run-lambda-tests:
@@ -43,8 +42,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ env.LAMBDA_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.LAMBDA_AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ vars.LAMBDA_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.LAMBDA_AWS_SECRET_KEY }}
           aws-region: ${{ env.AWS_REGION }}
       - name: Set up Python 3.12
         uses: actions/setup-python@v2
