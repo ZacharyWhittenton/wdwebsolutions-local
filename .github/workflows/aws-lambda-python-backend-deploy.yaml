@@ -1,4 +1,4 @@
-name: AWS S3 and CloudFront Deployment
+name: AWS Lambda Build, Testing, and Deployment
 
 on:
   push:
