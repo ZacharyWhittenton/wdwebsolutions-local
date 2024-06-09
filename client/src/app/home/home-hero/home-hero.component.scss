@@ -1,29 +1,67 @@
 /* hero.component.css */
 .hero {
-    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+}
+
+.scroll-btn {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
-  .scroll-btn {
-    animation: bounce 2s infinite;
+  40% {
+    transform: translateY(-10px);
   }
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
-    }
+  60% {
+    transform: translateY(-5px);
   }
-  
-  .long-logo {
-    width: 300px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
-  }
-  .custom-button {
-    border: 1px solid #333; /* Dark grey border */
-    padding: 8px 16px; /* Adjust padding as needed */
-  }
-  
-  
+}
+
+.long-logo {
+  width: 300px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.custom-button {
+  border: 1px solid #333; /* Dark grey border */
+  padding: 8px 16px; /* Adjust padding as needed */
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.5s;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+.custom-button:hover {
+  background-color: #0056b3; /* Change to your desired hover color */
+  color:white;
+  transform: scale(1.05);
+  border-color: white;
+}
+
+.custom-button:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.custom-button:active {
+  transform: scale(0.95);
+}
+
+.custom-button:active::after {
+  background: rgba(255, 255, 255, 0.2);
+}
