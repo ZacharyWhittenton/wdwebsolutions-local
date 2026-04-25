@@ -1,9 +1,146 @@
-.text-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+:host {
+  display: block;
+  color: #172033;
+}
+
+.contact-page {
+  min-height: 100svh;
+  padding: 8rem 1.25rem 4rem;
+  background:
+    linear-gradient(135deg, rgba(248, 251, 255, 0.98), rgba(234, 248, 246, 0.88) 54%, rgba(255, 249, 238, 0.92)),
+    #f8fbff;
+}
+
+.contact-panel,
+.simple-note {
+  width: min(100%, 920px);
+  margin: 0 auto;
+}
+
+.contact-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.58fr);
+  gap: 1.4rem;
+  align-items: center;
+  border: 1px solid rgba(34, 91, 166, 0.13);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 26px 70px rgba(23, 32, 51, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+  color: #225ba6;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+h1,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 38rem;
+  margin-bottom: 1rem;
+  color: #172033;
+  font-size: 3.3rem;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.contact-copy p {
+  max-width: 36rem;
+  margin-bottom: 0;
+  color: #526078;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.contact-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.primary-cta {
+  min-height: 3.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.9rem 1.18rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #225ba6, #12756f);
+  box-shadow: 0 16px 40px rgba(34, 91, 166, 0.24);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.primary-cta:hover {
+  transform: translateY(-2px);
+}
+
+.primary-cta:focus-visible,
+.email-list a:focus-visible {
+  outline: 3px solid rgba(237, 124, 79, 0.38);
+  outline-offset: 3px;
+}
+
+.email-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.email-list a {
+  display: block;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 8px;
+  padding: 0.85rem;
+  color: #12756f;
+  background: #ffffff;
+  font-weight: 750;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.email-list a:hover {
+  text-decoration: underline;
+}
+
+.simple-note {
+  margin-top: 1rem;
+  border-left: 4px solid #ed7c4f;
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  color: #526078;
+  background: rgba(255, 255, 255, 0.68);
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .contact-page {
+    padding: 6.5rem 1rem 3rem;
   }
-  .custom-button {
-    border: 1px solid #333; /* Dark grey border */
-    padding: 8px 16px; /* Adjust padding as needed */
+
+  .contact-panel {
+    grid-template-columns: 1fr;
+    padding: 1.1rem;
   }
+
+  h1 {
+    font-size: 2.35rem;
+    line-height: 1.06;
+  }
+
+  .primary-cta {
+    width: 100%;
+  }
+}

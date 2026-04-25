@@ -1,21 +1,25 @@
-<div class="flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-100 to-white">
-  <div class="container pb-20"> <!-- Adjust the value (40px) as needed -->
-    <p-card header="Contact Us" [style]="{ width: '360px' }" class="text-center mt-4">
-      <ng-template pTemplate="header">
-        <!-- You can optionally add an image or additional header content here -->
-      </ng-template>
+<main class="contact-page">
+  <section class="contact-panel" aria-labelledby="contact-title">
+    <div class="contact-copy">
+      <p class="eyebrow">Contact WD Web Solutions</p>
+      <h1 id="contact-title">Ready to talk through a project?</h1>
       <p>
-        If you have any questions or inquiries, please feel free to send us an email.
+        Send us a note about the custom software, website, store, dashboard, payment flow,
+        or integration you want to build. We will help you sort out the right next step.
       </p>
-      <br>
+    </div>
 
-      <p>zachw&#64;wdwebsolutions.com</p>
-      <p>derekd&#64;wdwebsolutions.com</p>
-      <ng-template pTemplate="footer">
-        <div class="flex gap-3 mt-1">
-          <button pButton type="button" label="Send Email" class="w-full custom-button" style="width: 100%;" (click)="sendEmail()"></button>
-        </div>
-      </ng-template>
-    </p-card>
-  </div>
-</div>
+    <div class="contact-card" aria-label="WD Web Solutions email contacts">
+      <button type="button" class="primary-cta" (click)="sendEmail()">Email both owners</button>
+
+      <div class="email-list">
+        <a href="mailto:zachw@wdwebsolutions.com">zachw&#64;wdwebsolutions.com</a>
+        <a href="mailto:derekd@wdwebsolutions.com">derekd&#64;wdwebsolutions.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="simple-note" aria-label="Project types">
+    <span>We can help with custom software, business websites, e-commerce, Stripe and Square payments, booking flows, CRM handoffs, dashboards, portals, and workflow automation.</span>
+  </section>
+</main>

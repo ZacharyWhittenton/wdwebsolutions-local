@@ -1,88 +1,352 @@
-.chart-container {
-    margin-top: 100px; /* Adjust the value as needed for the desired spacing */
+:host {
+  display: block;
+  color: #172033;
 }
 
-.hero {
-    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+.about-page {
+  overflow: hidden;
+  background: #ffffff;
 }
 
-/* Custom styles for the organization chart */
-p-organizationchart {
-    border: 1px solid black; /* Add a black border around the entire organization chart */
+.about-hero {
+  position: relative;
+  isolation: isolate;
+  padding: 6.6rem 1.25rem 3.5rem;
+  background:
+    linear-gradient(135deg, rgba(248, 251, 255, 0.98), rgba(234, 248, 246, 0.84) 48%, rgba(255, 249, 238, 0.9)),
+    #f8fbff;
 }
 
-p-organizationchart-table {
-    border-collapse: collapse; /* Collapse borders of the table */
+.hero-art,
+.grid-field,
+.signal-line {
+  position: absolute;
+  pointer-events: none;
 }
 
-p-organizationchart-nodes {
-    border: 1px solid black; /* Add a black border around each node */
-    padding: 10px; /* Add padding to the nodes for spacing */
+.hero-art {
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
 }
 
-p-organizationchart-lines {
-    position: relative; /* Ensure connector lines are positioned relative to the nodes */
+.grid-field {
+  width: 42rem;
+  height: 24rem;
+  right: -12rem;
+  bottom: -2rem;
+  border: 1px solid rgba(34, 91, 166, 0.08);
+  background-image:
+    linear-gradient(rgba(34, 91, 166, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 91, 166, 0.1) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent, black 24%, black 78%, transparent);
+  transform: perspective(900px) rotateX(58deg) rotateZ(-14deg);
+  animation: driftGrid 24s linear infinite;
 }
 
-p-organizationchart-line-right,
-p-organizationchart-line-left,
-p-organizationchart-line-top {
-    border: 1px solid black; /* Add black borders to the connector lines */
+.signal-line {
+  width: 28rem;
+  height: 2px;
+  right: 7%;
+  top: 44%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(34, 91, 166, 0.24), rgba(237, 124, 79, 0.35), transparent);
+  rotate: -15deg;
 }
 
-/* Optionally, you can customize the border style and width as needed */
-.section-wrapper {
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    min-height: 75vh; /* Adjust the height as needed */
-    padding: 20px; /* Add padding around the section */
-    margin-top: 50px; /* Adjust the value as needed to lower the section */
+.about-hero-inner,
+.scale-section,
+.founder-notes,
+.integration-section {
+  width: min(100%, 1160px);
+  margin: 0 auto;
 }
 
-.content-wrapper {
-    width: 100%; /* Make the content wrapper take the full width */
-    max-width: 1200px; /* Optional: limit the max width for better readability */
-    display: flex;
-    flex-wrap: wrap;
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 0.78fr);
+  gap: 2.25rem;
+  align-items: start;
 }
 
-.column {
-    padding: 20px; /* Add padding to create space around the content */
-    border: 1px solid black; /* Add border to each column */
-    margin: 10px; /* Add margin between columns */
-    text-align: center; /* Center text within the column */
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.hero-copy {
+  padding-top: 1rem;
 }
 
-.column-title {
-    font-size: 24px; /* Adjust title size as needed */
-    font-weight: bold;
-    margin-bottom: 10px; /* Space between title and paragraph */
+.eyebrow {
+  margin: 0 0 0.9rem;
+  color: #225ba6;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 42rem;
+  margin-bottom: 1.2rem;
+  color: #172033;
+  font-size: 3.8rem;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.hero-copy p,
+.scale-copy p,
+.founder-notes p,
+.integration-list p {
+  color: #526078;
+  line-height: 1.65;
+}
+
+.hero-copy p {
+  max-width: 39rem;
+  font-size: 1.13rem;
+}
+
+.team-stack {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.team-card {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid rgba(34, 91, 166, 0.13);
+  border-radius: 8px;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 22px 60px rgba(23, 32, 51, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.team-card.offset {
+  margin-left: 2.5rem;
 }
 
 .headshot {
-    width: 150px; /* Adjust size as needed */
-    height: 150px; /* Adjust size as needed */
-    border-radius: 50%; /* Make the image circular */
-    object-fit: cover; /* Ensure the image covers the entire circular area */
-    margin-bottom: 10px; /* Space between the image and the title */
+  width: 7rem;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 16px 34px rgba(23, 32, 51, 0.13);
 }
 
-.bg-blue-500 {
-    background-color: #4299e1; /* Tailwind CSS blue-500 color */
+.role {
+  margin-bottom: 0.35rem;
+  color: #225ba6;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
-.text-dark-blue {
-    color: #0d47a1;
+.team-card h2,
+.scale-copy h2,
+.integration-section h2 {
+  color: #172033;
+  font-weight: 850;
+  letter-spacing: 0;
 }
 
-.icon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+.team-card h2 {
+  margin-bottom: 0.25rem;
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+
+.team-card a {
+  color: #12756f;
+  font-weight: 750;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.team-card a:hover {
+  text-decoration: underline;
+}
+
+.scale-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+  gap: 1.35rem;
+  align-items: stretch;
+  padding: 4rem 1.25rem 0;
+}
+
+.scale-copy {
+  border-radius: 8px;
+  padding: 1.45rem;
+  background: linear-gradient(135deg, #225ba6, #12756f);
+  color: #ffffff;
+  box-shadow: 0 24px 70px rgba(34, 91, 166, 0.18);
+}
+
+.scale-copy .eyebrow,
+.scale-copy p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.scale-copy h2 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 2.15rem;
+  line-height: 1.08;
+}
+
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.scale-grid article,
+.founder-notes article,
+.integration-list article {
+  border: 1px solid rgba(34, 91, 166, 0.12);
+  border-radius: 8px;
+  padding: 1.15rem;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(23, 32, 51, 0.06);
+}
+
+.scale-grid span,
+.integration-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  border-radius: 8px;
+  padding: 0 0.7rem;
+  color: #225ba6;
+  font-weight: 850;
+  background: linear-gradient(135deg, rgba(34, 91, 166, 0.1), rgba(38, 166, 154, 0.13));
+}
+
+h3 {
+  margin: 1rem 0 0.55rem;
+  color: #172033;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.scale-grid p,
+.founder-notes p,
+.integration-list p {
+  margin-bottom: 0;
+}
+
+.founder-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem 1.25rem 0;
+}
+
+.founder-notes h3 {
+  margin-top: 0;
+}
+
+.integration-section {
+  padding: 4rem 1.25rem 5rem;
+}
+
+.integration-section h2 {
+  max-width: 48rem;
+  margin-bottom: 1.25rem;
+  font-size: 2.3rem;
+  line-height: 1.1;
+}
+
+.integration-list {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 1.05fr;
+  gap: 1rem;
+}
+
+.integration-list p {
+  margin-top: 0.85rem;
+}
+
+@keyframes driftGrid {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 48px 48px;
+  }
+}
+
+@media (max-width: 980px) {
+  .about-hero-inner,
+  .scale-section,
+  .scale-grid,
+  .integration-list {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card.offset {
+    margin-left: 0;
+  }
+
+  h1 {
+    font-size: 3.1rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .about-hero {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .scale-section,
+  .founder-notes,
+  .integration-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.06;
+  }
+
+  .hero-copy p {
+    font-size: 1rem;
+  }
+
+  .team-card,
+  .founder-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .headshot {
+    width: 100%;
+    max-width: 13rem;
+  }
+
+  .scale-copy h2,
+  .integration-section h2 {
+    font-size: 1.85rem;
+  }
+
+  .signal-line {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-field {
+    animation: none;
+  }
 }

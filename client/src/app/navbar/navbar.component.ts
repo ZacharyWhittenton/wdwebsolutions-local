@@ -8,11 +8,14 @@ import { Component, HostListener } from '@angular/core';
 export class NavbarComponent {
   lastScrollTop = 0;
   navbarHidden = false;
+  navbarScrolled = false;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     const currentScrollTop =
       window.pageYOffset || document.documentElement.scrollTop;
+    this.navbarScrolled = currentScrollTop > 8;
+
     if (currentScrollTop > this.lastScrollTop) {
       // Scrolling down
       this.navbarHidden = true;

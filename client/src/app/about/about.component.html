@@ -1,59 +1,107 @@
-<!--<section class="hero">
-    <div style="height: 100px;"></div> 
-    <div class="chart-container">
-        <p-organizationChart [value]="data" [collapsible]="true" class="p-organizationchart">
-            <ng-template let-node pTemplate="person">
-                <div class="p-organizationchart-nodes">
-                    <div class="p-2 text-center">
-                        <img 
-                            [src]="node.data.image" 
-                            class="mb-3 w-3rem h-3rem" />
-                        <div class="font-bold">
-                            {{ node.data.name }}
-                        </div>
-                        <div>
-                            {{ node.data.title }}
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-        </p-organizationChart>
+<main class="about-page">
+  <section class="about-hero" aria-labelledby="about-title">
+    <div class="hero-art" aria-hidden="true">
+      <div class="grid-field"></div>
+      <div class="signal-line"></div>
     </div>
 
-</section> -->
-<div style="height: 100px;"></div> 
-<section>
-    <div class="bg-blue-500 py-4 px-4 text-center">
-        <h2 class="text-4xl font-bold text-white mb-6 animate-slide-in">
-            About the owners!
-        </h2>
+    <div class="about-hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">About WD Web Solutions</p>
+        <h1 id="about-title">Custom software and websites built for real business volume</h1>
+        <p>
+          We build sharp, responsive websites and practical software systems that can grow from
+          a first online sale to high-traffic campaigns, heavy checkout activity, internal
+          operations, and millions of dollars in sales.
+        </p>
+      </div>
+
+      <div class="team-stack" aria-label="WD Web Solutions owners">
+        <article class="team-card">
+          <img src="assets/images/derekd.jpeg" alt="Derek Dreibrodt" class="headshot">
+          <div>
+            <p class="role">Lead Developer</p>
+            <h2>Derek Dreibrodt</h2>
+            <a href="mailto:derekd@wdwebsolutions.com">derekd&#64;wdwebsolutions.com</a>
+          </div>
+        </article>
+
+        <article class="team-card offset">
+          <img src="assets/images/zachw.jpeg" alt="Zachary Whittenton" class="headshot">
+          <div>
+            <p class="role">Senior Developer</p>
+            <h2>Zachary Whittenton</h2>
+            <a href="mailto:zachw@wdwebsolutions.com">zachw&#64;wdwebsolutions.com</a>
+          </div>
+        </article>
+      </div>
     </div>
-    <section class="section-wrapper">
-        <div class="p-grid content-wrapper">
-            <div class="p-col-12 p-md-6 column">
-                <img src="assets/images/derekd.jpeg" alt="Derek Dreibrodt" class="headshot">
-                <h2 class="column-title">Derek Dreibrodt</h2>
-                <p>derekd&#64;wdwebsolutions.com</p>
-                <br>
-                <p>
-                    As the Lead Developer at WD Web Solutions, Derek graduated from The University of Texas with a BBA in Management Information Systems.
-                    Derek also has certificates from UT Austin in Computer Science and Applied Statistical Modeling. Derek is now employed as a Data Engineer 
-                    for Western Monroe where he builds software for Fortune 500 companies.
-                </p>
-            </div>
-            <div class="p-col-12 p-md-6 column">
-                <img src="assets/images/zachw.jpeg" alt="Zachary Whittenton" class="headshot">
-                <h2 class="column-title">Zachary Whittenton</h2>
-                <p>zachw&#64;wdwebsolutions.com</p>
-                <br>
-                <p>
-                    As a Senior Developer for WD Web Solutions, Zach graduated from the University of Texas at San Antonio with a BBA in Information Systems.
-                    Zach started his career off as a Business Solution Analyst Intern for Voiant Group where he utilized
-                    Anaplan to improve and automate Sales Performance Management. Zach is now employed as a Business Analyst for 
-                    DaVita IKC where he is automating healthcare systems for dialysis patients.
-                </p>
-            </div>
-        </div>
-    </section>
-     
-</section>
+  </section>
+
+  <section class="scale-section" aria-labelledby="scale-title">
+    <div class="scale-copy">
+      <p class="eyebrow">Built to scale</p>
+      <h2 id="scale-title">From first launch to high-volume software and sales workflows</h2>
+      <p>
+        We can design the public site, build the custom software behind it, connect checkout,
+        structure the data, and automate the operational handoffs so growth does not turn into
+        manual work.
+      </p>
+    </div>
+
+    <div class="scale-grid">
+      <article>
+        <span>01</span>
+        <h3>Custom business tools</h3>
+        <p>Dashboards, portals, admin screens, intake flows, reporting views, and approval workflows.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Reliable checkout paths</h3>
+        <p>Stripe, Square, product catalogs, deposits, subscriptions, invoices, and order handoffs.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Traffic-ready foundations</h3>
+        <p>Responsive pages, clean software structure, and launch plans designed for campaign spikes.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="founder-notes" aria-label="Owner background">
+    <article>
+      <h3>Derek</h3>
+      <p>
+        Derek brings a background in management information systems, computer science,
+        applied statistical modeling, and data engineering for enterprise software teams.
+      </p>
+    </article>
+    <article>
+      <h3>Zach</h3>
+      <p>
+        Zach pairs business systems experience with automation work across planning,
+        analysis, and healthcare operations, keeping projects useful after launch.
+      </p>
+    </article>
+  </section>
+
+  <section class="integration-section" aria-labelledby="integration-title">
+    <p class="eyebrow">Connected systems</p>
+    <h2 id="integration-title">Your website and custom software can plug into the tools your business already uses</h2>
+
+    <div class="integration-list">
+      <article>
+        <span>Payments</span>
+        <p>Stripe, Square, checkout links, invoices, subscriptions, deposits, and customer portals.</p>
+      </article>
+      <article>
+        <span>Customer data</span>
+        <p>CRM handoffs, lead routing, form submissions, email lists, and custom databases.</p>
+      </article>
+      <article>
+        <span>Operations</span>
+        <p>QuickBooks, Airtable, Zapier, spreadsheets, internal APIs, notifications, reporting, and custom dashboards.</p>
+      </article>
+    </div>
+  </section>
+</main>
