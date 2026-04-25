@@ -1,12 +1,76 @@
-<section class="hero flex items-center justify-center h-screen bg-gradient-to-b from-blue-100 to-white relative text-center">
-  <div class="hero-content p-8">
-    <div class="flex flex-col items-center">
-      <img src="assets/images/longlogo1.png" alt="Long Logo" class="long-logo" style="margin-bottom: 20px;">
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mt-6">Your Vision, Our Creation</h1>
+<section class="hero" aria-labelledby="home-hero-title">
+  <div class="hero-background" aria-hidden="true">
+    <div class="background-wash"></div>
+    <div class="grid-plane grid-plane-one"></div>
+    <div class="grid-plane grid-plane-two"></div>
+
+    <div class="motion-card motion-card-main">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <p class="mt-4 text-lg md:text-2xl text-gray-600">Transforming ideas into reality with innovative web & software solutions.</p>
-    <a routerLink="/contact">
-      <button pButton class="p-button p-component p-button-primary mt-6 custom-button">Get in Touch</button>
-    </a>
+
+    <div class="motion-card motion-card-small">
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="signal-line signal-line-one"></div>
+    <div class="signal-line signal-line-two"></div>
+    <div class="signal-node node-one"></div>
+    <div class="signal-node node-two"></div>
+    <div class="signal-node node-three"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <img src="assets/images/longlogo1.png" alt="WD Web Solutions" class="long-logo">
+      <p class="eyebrow">Texas custom software and web studio</p>
+      <h1 id="home-hero-title">Custom software and websites built around your business</h1>
+      <p class="hero-copy">
+        We build polished websites, internal tools, customer portals, dashboards,
+        automations, and integrations that help your business run better.
+      </p>
+
+      <div class="hero-actions">
+        <a routerLink="/contact" class="primary-cta">Start a project</a>
+        <a routerLink="/about" class="secondary-cta">Meet the owners</a>
+      </div>
+    </div>
+
+    <aside class="hero-panel" aria-label="WD Web Solutions project approach">
+      <div class="panel-header">
+        <span class="status-dot"></span>
+        <span>Project Flow</span>
+      </div>
+
+      <div class="flow-list">
+        <div class="flow-item">
+          <span class="flow-number">01</span>
+          <div>
+            <strong>Map</strong>
+            <p>Clarify the customer experience, business workflow, and data needs.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <span class="flow-number">02</span>
+          <div>
+            <strong>Build</strong>
+            <p>Create the site, software tool, dashboard, or portal around that workflow.</p>
+          </div>
+        </div>
+        <div class="flow-item">
+          <span class="flow-number">03</span>
+          <div>
+            <strong>Connect</strong>
+            <p>Integrate payments, CRMs, APIs, forms, and automations where needed.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span></span>
   </div>
 </section>

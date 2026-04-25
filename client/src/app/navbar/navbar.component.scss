@@ -1,21 +1,117 @@
-/* navbar.component.css */
 .navbar {
-    transform: translateY(0);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 1;
-    z-index: 50;
+  transform: translateY(0);
+  transition: transform 260ms ease, opacity 260ms ease, background-color 260ms ease, box-shadow 260ms ease;
+  opacity: 1;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgba(34, 91, 166, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+.navbar.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 34px rgba(23, 32, 51, 0.08);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.nav-container {
+  min-height: 5rem;
+  padding: 0.8rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.logo a:focus-visible,
+.nav-links a:focus-visible {
+  outline: 3px solid rgba(237, 124, 79, 0.38);
+  outline-offset: 3px;
+}
+
+.logo img {
+  height: 3.25rem;
+  width: auto;
+  filter: drop-shadow(0 8px 18px rgba(34, 91, 166, 0.12));
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(34, 91, 166, 0.1);
+  border-radius: 8px;
+  padding: 0.28rem;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.nav-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.55rem;
+  border-radius: 7px;
+  padding: 0.55rem 0.8rem;
+  color: #172033;
+  font-weight: 750;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: #225ba6;
+  background: rgba(34, 91, 166, 0.08);
+}
+
+@media (max-width: 520px) {
+  .nav-container {
+    min-height: 4.5rem;
+    padding: 0.7rem 0.85rem;
+    gap: 0.55rem;
   }
-  .navbar.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  
-  .logo {
-    height: 100%; /* Ensure the logo container takes up the full height of the navbar */
-  }
-  
+
   .logo img {
-    height: 50px; /* Adjust the height as needed */
-    width: auto; /* Maintain the aspect ratio */
+    height: 2.75rem;
   }
-  
+
+  .nav-links {
+    gap: 0.15rem;
+  }
+
+  .nav-links a {
+    min-height: 2.35rem;
+    padding: 0.5rem 0.55rem;
+    font-size: 0.94rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .nav-container {
+    padding: 0.65rem 0.7rem;
+  }
+
+  .logo img {
+    height: 2.35rem;
+  }
+
+  .nav-links a {
+    padding: 0.45rem 0.42rem;
+    font-size: 0.86rem;
+  }
+}
