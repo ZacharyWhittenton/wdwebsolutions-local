@@ -1,0 +1,35 @@
+{
+  "environment": "prod",
+  "domain": "wdwebsolutions.com",
+  "resourcePrefix": "wdwebsolutions-prod",
+  "tenant": "wdwebsolutions",
+  "client": "WD Web Solutions",
+  "application": "contact-center",
+  "repository": "WD-Web-Solutions/wdwebsolutions.com",
+  "awsAccountId": "767688909304",
+  "frontendRegion": "us-east-1",
+  "backendRegion": "us-east-1",
+  "s3BucketName": "wdwebsolutions.com",
+  "lambdaFunctionName": "wdwebsolutions-prod-contact-api",
+  "lambdaHandler": "main.main",
+  "lambdaEnvironmentConfig": "prod.config.json",
+  "cloudfrontDistributionName": "wdwebsolutions-prod-web",
+  "existingCloudfrontDomainName": "d1b9j6tp2nupgf.cloudfront.net",
+  "frontendCertificateArn": "arn:aws:acm:us-east-1:767688909304:certificate/18c29dd6-1138-437a-a63c-6de847f365c1",
+  "cloudfrontWebAclId": "arn:aws:wafv2:us-east-1:767688909304:global/webacl/CreatedByCloudFront-ce673d8e-f715-41d7-b80e-2fe46303eb33/6497e116-239c-4678-8b42-9b037a144265",
+  "apiDomainName": "api.wdwebsolutions.com",
+  "sourceEmail": "no-reply@wdwebsolutions.com",
+  "contactRecipients": [
+    "derekd@wdwebsolutions.com",
+    "zachw@wdwebsolutions.com"
+  ],
+  "githubActionsUserName": "wdwebsolutions-prod-github-actions-deploy",
+  "createGithubActionsAccessKey": false,
+  "protectImportedFrontend": true,
+  "additionalAllowedOrigins": [
+    "http://localhost:4200"
+  ],
+  "additionalFrontendAliases": [
+    "www.wdwebsolutions.com"
+  ]
+}

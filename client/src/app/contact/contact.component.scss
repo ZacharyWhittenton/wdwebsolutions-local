@@ -19,9 +19,9 @@
 
 .contact-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.58fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(22rem, 1fr);
   gap: 1.4rem;
-  align-items: center;
+  align-items: start;
   border: 1px solid rgba(34, 91, 166, 0.13);
   border-radius: 8px;
   padding: 1.5rem;
@@ -62,9 +62,55 @@ h1 {
   line-height: 1.65;
 }
 
-.contact-card {
+.contact-form {
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.42rem;
+  color: #172033;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(23, 32, 51, 0.15);
+  border-radius: 8px;
+  padding: 0.82rem 0.9rem;
+  color: #172033;
+  background: #ffffff;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.35;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 9rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #225ba6;
+  box-shadow: 0 0 0 3px rgba(34, 91, 166, 0.14);
+}
+
+.contact-form small {
+  color: #b54030;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.field-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
 }
 
 .primary-cta {
@@ -88,31 +134,36 @@ h1 {
   transform: translateY(-2px);
 }
 
+.primary-cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+  transform: none;
+}
+
 .primary-cta:focus-visible,
-.email-list a:focus-visible {
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
   outline: 3px solid rgba(237, 124, 79, 0.38);
   outline-offset: 3px;
 }
 
-.email-list {
-  display: grid;
-  gap: 0.65rem;
-}
-
-.email-list a {
-  display: block;
-  border: 1px solid rgba(23, 32, 51, 0.08);
+.form-status {
+  margin: 0;
   border-radius: 8px;
-  padding: 0.85rem;
-  color: #12756f;
-  background: #ffffff;
+  padding: 0.85rem 0.95rem;
+  font-size: 0.92rem;
   font-weight: 750;
-  text-decoration: none;
-  word-break: break-word;
+  line-height: 1.45;
 }
 
-.email-list a:hover {
-  text-decoration: underline;
+.form-status.success {
+  color: #0f5d4f;
+  background: rgba(18, 117, 111, 0.1);
+}
+
+.form-status.error {
+  color: #8f3125;
+  background: rgba(237, 124, 79, 0.16);
 }
 
 .simple-note {
@@ -133,6 +184,10 @@ h1 {
   .contact-panel {
     grid-template-columns: 1fr;
     padding: 1.1rem;
+  }
+
+  .field-pair {
+    grid-template-columns: 1fr;
   }
 
   h1 {

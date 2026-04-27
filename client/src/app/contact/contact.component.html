@@ -9,14 +9,44 @@
       </p>
     </div>
 
-    <div class="contact-card" aria-label="WD Web Solutions email contacts">
-      <button type="button" class="primary-cta" (click)="sendEmail()">Email both owners</button>
+    <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitContactForm()" aria-label="Contact form">
+      <label>
+        <span>Name</span>
+        <input type="text" formControlName="name" autocomplete="name">
+        <small *ngIf="hasError('name')">Enter your name.</small>
+      </label>
 
-      <div class="email-list">
-        <a href="mailto:zachw@wdwebsolutions.com">zachw&#64;wdwebsolutions.com</a>
-        <a href="mailto:derekd@wdwebsolutions.com">derekd&#64;wdwebsolutions.com</a>
+      <label>
+        <span>Email</span>
+        <input type="email" formControlName="emailAddress" autocomplete="email">
+        <small *ngIf="hasError('emailAddress')">Enter a valid email address.</small>
+      </label>
+
+      <div class="field-pair">
+        <label>
+          <span>Company</span>
+          <input type="text" formControlName="company" autocomplete="organization">
+        </label>
+
+        <label>
+          <span>Phone</span>
+          <input type="tel" formControlName="phone" autocomplete="tel">
+        </label>
       </div>
-    </div>
+
+      <label>
+        <span>Message</span>
+        <textarea formControlName="message" rows="6"></textarea>
+        <small *ngIf="hasError('message')">Tell us a little about the project.</small>
+      </label>
+
+      <button type="submit" class="primary-cta" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Sending...' : 'Send message' }}
+      </button>
+
+      <p class="form-status success" *ngIf="successMessage">{{ successMessage }}</p>
+      <p class="form-status error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
   </section>
 
   <section class="simple-note" aria-label="Project types">

@@ -1,0 +1,35 @@
+{
+  "environment": "prod",
+  "domain": "wdwebsolutions.com",
+  "resourcePrefix": "wdwebsolutions-prod",
+  "tenant": "wdwebsolutions",
+  "client": "WD Web Solutions",
+  "application": "contact-center",
+  "repository": "WD-Web-Solutions/wdwebsolutions.com",
+  "awsAccountId": "123456789012",
+  "frontendRegion": "us-east-1",
+  "backendRegion": "us-east-1",
+  "s3BucketName": "wdwebsolutions.com",
+  "lambdaFunctionName": "wdwebsolutions-prod-contact-api",
+  "lambdaHandler": "main.main",
+  "lambdaEnvironmentConfig": "prod.config.json",
+  "cloudfrontDistributionName": "wdwebsolutions-prod-web",
+  "existingCloudfrontDomainName": "d123example.cloudfront.net",
+  "frontendCertificateArn": "arn:aws:acm:us-east-1:123456789012:certificate/example",
+  "cloudfrontWebAclId": "",
+  "apiDomainName": "api.wdwebsolutions.com",
+  "sourceEmail": "no-reply@wdwebsolutions.com",
+  "contactRecipients": [
+    "derekd@wdwebsolutions.com",
+    "zachw@wdwebsolutions.com"
+  ],
+  "githubActionsUserName": "wdwebsolutions-prod-github-actions-deploy",
+  "createGithubActionsAccessKey": false,
+  "protectImportedFrontend": true,
+  "additionalAllowedOrigins": [
+    "http://localhost:4200"
+  ],
+  "additionalFrontendAliases": [
+    "www.wdwebsolutions.com"
+  ]
+}

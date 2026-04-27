@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>New WD Web Solutions Contact Request</title>
+</head>
+<body style="margin:0;background:#f4f7fb;color:#172033;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f4f7fb;padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#ffffff;border:1px solid #dfe7f2;border-radius:8px;overflow:hidden;">
+          <tr>
+            <td style="background:#172033;color:#ffffff;padding:24px 28px;">
+              <p style="margin:0 0 8px;font-size:13px;text-transform:uppercase;font-weight:700;letter-spacing:0;">WD Web Solutions</p>
+              <h1 style="margin:0;font-size:24px;line-height:1.25;">New contact form submission</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:26px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="padding:0 0 14px;color:#526078;font-size:13px;">Submitted</td>
+                  <td style="padding:0 0 14px;color:#172033;font-size:15px;">{{ contact.submitted_at.strftime("%Y-%m-%d %H:%M:%S %Z") }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 14px;color:#526078;font-size:13px;">Name</td>
+                  <td style="padding:0 0 14px;color:#172033;font-size:15px;">{{ contact.name }}</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 0 14px;color:#526078;font-size:13px;">Email</td>
+                  <td style="padding:0 0 14px;color:#172033;font-size:15px;">
+                    <a href="mailto:{{ contact.emailAddress }}" style="color:#225ba6;">{{ contact.emailAddress }}</a>
+                  </td>
+                </tr>
+                {% if contact.company %}
+                <tr>
+                  <td style="padding:0 0 14px;color:#526078;font-size:13px;">Company</td>
+                  <td style="padding:0 0 14px;color:#172033;font-size:15px;">{{ contact.company }}</td>
+                </tr>
+                {% endif %}
+                {% if contact.phone %}
+                <tr>
+                  <td style="padding:0 0 14px;color:#526078;font-size:13px;">Phone</td>
+                  <td style="padding:0 0 14px;color:#172033;font-size:15px;">{{ contact.phone }}</td>
+                </tr>
+                {% endif %}
+              </table>
+              <div style="margin-top:12px;padding:18px;background:#f8fbff;border-left:4px solid #12756f;border-radius:8px;">
+                <p style="margin:0 0 8px;color:#526078;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0;">Message</p>
+                <p style="margin:0;color:#172033;font-size:16px;line-height:1.6;white-space:pre-wrap;">{{ contact.message }}</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "source_email": "no-reply@wdwebsolutions.com",
+  "output_emails": [
+    "derekd@wdwebsolutions.com",
+    "zachw@wdwebsolutions.com"
+  ],
+  "ses_region": "us-east-1",
+  "send_email": false
+}

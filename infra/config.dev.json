@@ -1,0 +1,29 @@
+{
+  "environment": "dev",
+  "domain": "wdwebsolutions.com",
+  "resourcePrefix": "wdwebsolutions-dev",
+  "tenant": "wdwebsolutions",
+  "client": "WD Web Solutions",
+  "application": "contact-center",
+  "repository": "WD-Web-Solutions/wdwebsolutions.com",
+  "awsAccountId": "767688909304",
+  "frontendRegion": "us-east-1",
+  "backendRegion": "us-east-1",
+  "s3BucketName": "dev.wdwebsolutions.com",
+  "lambdaFunctionName": "wdwebsolutions-dev-contact-api",
+  "lambdaHandler": "main.main",
+  "lambdaEnvironmentConfig": "dev.config.json",
+  "cloudfrontDistributionName": "wdwebsolutions-dev-web",
+  "apiDomainName": "api.dev.wdwebsolutions.com",
+  "sourceEmail": "no-reply@wdwebsolutions.com",
+  "contactRecipients": [
+    "derekd@wdwebsolutions.com",
+    "zachw@wdwebsolutions.com"
+  ],
+  "githubActionsUserName": "wdwebsolutions-dev-github-actions-deploy",
+  "createGithubActionsAccessKey": false,
+  "additionalAllowedOrigins": [
+    "http://localhost:4200"
+  ],
+  "additionalFrontendAliases": []
+}
