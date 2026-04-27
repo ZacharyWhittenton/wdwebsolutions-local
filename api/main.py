@@ -1,17 +1,66 @@
-import base64
 import json
 import os
 from pathlib import Path
 from typing import Any
 
 import boto3
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from mangum import Mangum
+from pydantic import BaseModel, ConfigDict
 
 from helpers.contact import ContactData, ContactValidationError, render_contact_email
 
 
-DEFAULT_HEADERS = {
-    "Content-Type": "application/json",
-}
+DEFAULT_CORS_ORIGINS = [
+    "http://localhost:4200",
+    "http://127.0.0.1:4200",
+    "https://dev.wdwebsolutions.com",
+    "https://wdwebsolutions.com",
+    "https://www.wdwebsolutions.com",
+]
+
+
+def load_cors_origins() -> list[str]:
+    configured_origins = os.environ.get("CONTACT_ALLOWED_ORIGINS")
+    if configured_origins:
+        return [
+            origin.strip()
+            for origin in configured_origins.split(",")
+            if origin.strip()
+        ]
+
+    return DEFAULT_CORS_ORIGINS
+
+
+class ContactRequest(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    name: str = ""
+    emailAddress: str = ""
+    message: str = ""
+    formType: str = "contact"
+    company: str | None = None
+    phone: str | None = None
+
+
+class ContactResponse(BaseModel):
+    message: str
+
+
+app = FastAPI(
+    title="WD Web Solutions Contact API",
+    version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=load_cors_origins(),
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
+)
 
 
 def load_config() -> dict:
@@ -42,42 +91,6 @@ def load_config() -> dict:
     return config
 
 
-def make_response(status_code: int, body: dict[str, Any]) -> dict:
-    return {
-        "statusCode": status_code,
-        "headers": DEFAULT_HEADERS,
-        "body": json.dumps(body),
-    }
-
-
-def parse_event_body(event: dict[str, Any]) -> dict[str, Any]:
-    body = event.get("body", event)
-
-    if event.get("isBase64Encoded") and isinstance(body, str):
-        body = base64.b64decode(body).decode("utf-8")
-
-    if isinstance(body, str):
-        return json.loads(body or "{}")
-
-    if isinstance(body, dict):
-        return body
-
-    raise ContactValidationError("Request body must be a JSON object")
-
-
-def request_method(event: dict[str, Any]) -> str:
-    return (
-        event.get("requestContext", {})
-        .get("http", {})
-        .get("method", event.get("httpMethod", "POST"))
-        .upper()
-    )
-
-
-def request_path(event: dict[str, Any]) -> str:
-    return event.get("rawPath") or event.get("path") or "/contact"
-
-
 def send_email(
     subject: str,
     email_body: str,
@@ -105,9 +118,13 @@ def send_email(
     print("Contact email sent", response.get("MessageId"))
 
 
-def handle_contact(event: dict[str, Any]) -> dict:
-    form_data = parse_event_body(event)
-    contact = ContactData(
+def contact_from_payload(payload: ContactRequest | dict[str, Any]) -> ContactData:
+    form_data = payload.model_dump() if isinstance(payload, ContactRequest) else payload
+
+    if not isinstance(form_data, dict):
+        raise ContactValidationError("Request body must be a JSON object")
+
+    return ContactData(
         name=form_data.get("name", ""),
         emailAddress=form_data.get("emailAddress", ""),
         message=form_data.get("message", ""),
@@ -115,35 +132,56 @@ def handle_contact(event: dict[str, Any]) -> dict:
         company=form_data.get("company") or None,
         phone=form_data.get("phone") or None,
     )
+
+
+def process_contact_payload(payload: ContactRequest | dict[str, Any]) -> dict[str, str]:
+    contact = contact_from_payload(payload)
     email_body = render_contact_email(contact)
     subject = f"New WD Web Solutions contact request from {contact.emailAddress}"
     send_email(subject, email_body, load_config(), reply_to=contact.emailAddress)
-    return make_response(200, {"message": "Your request has been sent."})
+    return {"message": "Your request has been sent."}
 
 
-def main(event, context):
+@app.exception_handler(RequestValidationError)
+async def request_validation_exception_handler(
+    request: Request,
+    error: RequestValidationError,
+) -> JSONResponse:
+    print(f"Request validation error on {request.url.path}: {error}")
+    return JSONResponse(
+        status_code=400,
+        content={"message": "Request body must be a JSON object"},
+    )
+
+
+@app.get("/health")
+def health_check() -> dict[str, str]:
+    return {"status": "ok"}
+
+
+def submit_contact_payload(payload: ContactRequest) -> ContactResponse | JSONResponse:
     try:
-        method = request_method(event)
-        path = request_path(event).rstrip("/")
-
-        if method == "OPTIONS":
-            return make_response(204, {})
-
-        if method != "POST" or path not in {"/contact", "/api/contact"}:
-            return make_response(404, {"message": "Not found"})
-
-        return handle_contact(event)
+        return ContactResponse(**process_contact_payload(payload))
     except ContactValidationError as error:
         print(f"Contact validation error: {error}")
-        return make_response(400, {"message": str(error)})
-    except json.JSONDecodeError:
-        return make_response(400, {"message": "Request body must be valid JSON"})
+        return JSONResponse(status_code=400, content={"message": str(error)})
     except Exception as error:
         print(f"Unexpected contact handler error: {error}")
-        return make_response(
-            500,
-            {"message": "An error occurred while sending your request."},
+        return JSONResponse(
+            status_code=500,
+            content={"message": "An error occurred while sending your request."},
         )
 
 
-handler = main
+@app.post("/contact", response_model=ContactResponse)
+def submit_contact(payload: ContactRequest) -> ContactResponse | JSONResponse:
+    return submit_contact_payload(payload)
+
+
+@app.post("/api/contact", response_model=ContactResponse)
+def submit_api_contact(payload: ContactRequest) -> ContactResponse | JSONResponse:
+    return submit_contact_payload(payload)
+
+
+handler = Mangum(app)
+main = handler

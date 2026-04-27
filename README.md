@@ -27,9 +27,12 @@ Repo for the WD Web Solutions Angular Website
 
 ```bash
 cd api
+python -m pip install -r requirements-dev.txt
 python local_server.py
 ```
 
 - Local Angular development points to `http://localhost:8000/contact`.
 - Production Angular builds point to `https://api.wdwebsolutions.com/contact`.
-- See `docs/serverless-backend-notes.md` for the FastAPI Lambda follow-up, dev environment plan, and GitHub Actions secret notes.
+- The Lambda backend is a FastAPI app adapted through Mangum.
+- Override allowed CORS origins with `CONTACT_ALLOWED_ORIGINS` as a comma-separated list when adding environments.
+- See `docs/serverless-backend-notes.md` for the dev environment plan, endpoint configuration notes, and GitHub Actions secret notes.
