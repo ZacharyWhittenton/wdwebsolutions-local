@@ -18,3 +18,18 @@ Repo for the WD Web Solutions Angular Website
 - Created Privilege "WDWebSolutionsS3Access" which grants access to S3 bucket and Cloudfront distribution invalidations to invalidate cache
 - DevOps settings based off of https://antonputra.com/amazon/deploy-react-to-s3-and-cloudfront/
   - Had to adjust .yaml file to work with Angular instead of React
+
+## Contact API
+
+- Infrastructure lives in `infra/`.
+- Lambda contact API code lives in `api/`.
+- Local contact API server:
+
+```bash
+cd api
+python local_server.py
+```
+
+- Local Angular development points to `http://localhost:8000/contact`.
+- Production Angular builds point to `https://api.wdwebsolutions.com/contact`.
+- See `docs/serverless-backend-notes.md` for the FastAPI Lambda follow-up, dev environment plan, and GitHub Actions secret notes.

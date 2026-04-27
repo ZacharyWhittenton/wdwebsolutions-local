@@ -12,6 +12,7 @@ import { BackgroundWhiteComponent } from './shared/background-white/background-w
 import { ContactComponent } from './contact/contact.component'; // Import the ContactComponent
 
 import { BrowserModule } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ToolbarModule } from 'primeng/toolbar';
 import { AvatarModule } from 'primeng/avatar'; 
@@ -59,7 +60,8 @@ import { DividerModule } from 'primeng/divider';
   exports: [
   ],
   providers: [
-    provideAnimations()
+    provideAnimations(),
+    provideHttpClient()
   ],
 
   bootstrap: [AppComponent]

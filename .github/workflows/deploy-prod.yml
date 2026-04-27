@@ -1,0 +1,147 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  FRONTEND_AWS_REGION: us-east-1
+  BACKEND_AWS_REGION: us-east-1
+  PROJECT_PATH: client
+  API_CODE_PATH: api
+  S3_BUCKET: ${{ vars.PROD_S3_BUCKET || 'wdwebsolutions.com' }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.PROD_CLOUDFRONT_DISTRIBUTION_ID || 'E5R6IPQNGNHV1' }}
+  LAMBDA_FUNCTION_NAME: ${{ vars.PROD_LAMBDA_FUNCTION_NAME || 'wdwebsolutions-prod-contact-api' }}
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    name: Test Contact API
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install API dependencies
+        run: |
+          cd "${API_CODE_PATH}"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run API tests
+        run: |
+          cd "${API_CODE_PATH}"
+          python -m unittest discover -s tests
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    name: Build Angular Frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ env.PROJECT_PATH }}/package-lock.json
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: ${{ env.PROJECT_PATH }}
+
+      - name: Build frontend
+        run: npm run build -- --configuration=production
+        working-directory: ${{ env.PROJECT_PATH }}
+
+  deploy-frontend:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    name: Deploy Angular Frontend
+    needs:
+      - build-frontend
+      - test-api
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.WDWS_DEPLOY_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.WDWS_DEPLOY_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.FRONTEND_AWS_REGION }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ env.PROJECT_PATH }}/package-lock.json
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: ${{ env.PROJECT_PATH }}
+
+      - name: Build frontend
+        run: npm run build -- --configuration=production
+        working-directory: ${{ env.PROJECT_PATH }}
+
+      - name: Sync frontend to S3
+        run: aws s3 sync --delete dist/client/browser "s3://${S3_BUCKET}"
+        working-directory: ${{ env.PROJECT_PATH }}
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
+            --paths "/*"
+
+  deploy-api:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    name: Deploy Contact API Lambda
+    needs: test-api
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.WDWS_DEPLOY_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.WDWS_DEPLOY_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.BACKEND_AWS_REGION }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Lambda dependencies
+        run: |
+          cd "${API_CODE_PATH}"
+          rm -rf build function.zip
+          mkdir -p build
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -t build/
+
+      - name: Package Lambda
+        run: |
+          cd "${API_CODE_PATH}"
+          cp main.py prod.config.json build/
+          cp -R helpers templates build/
+          cd build
+          zip -r ../function.zip .
+
+      - name: Deploy Lambda code
+        run: |
+          cd "${API_CODE_PATH}"
+          aws lambda update-function-code \
+            --function-name "${LAMBDA_FUNCTION_NAME}" \
+            --zip-file fileb://function.zip

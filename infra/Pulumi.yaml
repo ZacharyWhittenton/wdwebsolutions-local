@@ -1,0 +1,11 @@
+name: wdwebsolutions-contact-center
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: WD Web Solutions static frontend and contact-center Lambda infrastructure
+config:
+  aws:region: us-east-1
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python
