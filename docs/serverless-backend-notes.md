@@ -2,13 +2,13 @@
 
 ## Current branch
 
-- Infrastructure is under `infra/` and mirrors the Perlas structure, configured for `wdwebsolutions.com`.
-- Runtime contact API code is under `api/`.
+- Infrastructure is under `infra/`, configured for `wdwebsolutions.com`.
+- Runtime contact API code is under `api/` as a FastAPI app adapted to Lambda with Mangum.
 - Production contact submissions target `https://api.wdwebsolutions.com/contact`.
 - Local Angular development targets `http://localhost:8000/contact`.
 - Captcha is intentionally omitted for now.
 
-## FastAPI Lambda branch
+## FastAPI Lambda backend
 
 FastAPI on Lambda is possible and is a good fit for this project while traffic is low. The usual production shape is:
 
@@ -18,7 +18,7 @@ FastAPI on Lambda is possible and is a good fit for this project while traffic i
 - Local development through `uvicorn`.
 - Integration tests using FastAPI `TestClient`.
 
-This branch prepares the gateway for that migration by using a `$default` HTTP API route, but it does not implement FastAPI yet.
+The current backend uses that shape. The deployed Pulumi handler can remain `main.main` because `main` is assigned to the Mangum adapter, and `handler` is also exported for a later cleanup branch if we want the infrastructure config to say `main.handler`.
 
 ## Dev environment branch
 

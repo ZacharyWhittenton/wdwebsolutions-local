@@ -33,7 +33,7 @@ jobs:
         run: |
           cd "${API_CODE_PATH}"
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       - name: Run API tests
         run: |
