@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any
 
 import boto3
-from fastapi import FastAPI, Request
+from fastapi import Cookie, Depends, FastAPI, Request, Response
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -12,6 +12,15 @@ from mangum import Mangum
 from pydantic import BaseModel, ConfigDict
 
 from helpers.contact import ContactData, ContactValidationError, render_contact_email
+from helpers.auth import (
+    AuthError,
+    authenticate_user,
+    create_session,
+    create_user,
+    destroy_session,
+    get_current_user,
+    require_role,
+)
 
 
 DEFAULT_CORS_ORIGINS = [
@@ -50,6 +59,16 @@ class ContactResponse(BaseModel):
     message: str
 
 
+class SignupRequest(BaseModel):
+    email: str
+    password: str
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
 app = FastAPI(
     title="WD Web Solutions Contact API",
     version="1.0.0",
@@ -58,6 +77,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=load_cors_origins(),
+    allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization"],
 )
@@ -181,6 +201,51 @@ def submit_contact(payload: ContactRequest) -> ContactResponse | JSONResponse:
 @app.post("/api/contact", response_model=ContactResponse)
 def submit_api_contact(payload: ContactRequest) -> ContactResponse | JSONResponse:
     return submit_contact_payload(payload)
+
+
+@app.post("/auth/signup")
+def signup(payload: SignupRequest, response: Response):
+    try:
+        user = create_user(payload.email, payload.password)
+    except AuthError as error:
+        return JSONResponse(status_code=409, content={"message": str(error)})
+
+    session_id = create_session(user["email"])
+    response.set_cookie(
+        "session_id", session_id,
+        httponly=True, secure=True, samesite="lax",
+        max_age=60 * 60 * 24 * 7,
+    )
+    return user
+
+
+@app.post("/auth/login")
+def login(payload: LoginRequest, response: Response):
+    try:
+        user = authenticate_user(payload.email, payload.password)
+    except AuthError as error:
+        return JSONResponse(status_code=401, content={"message": str(error)})
+
+    session_id = create_session(user["email"])
+    response.set_cookie(
+        "session_id", session_id,
+        httponly=True, secure=True, samesite="lax",
+        max_age=60 * 60 * 24 * 7,
+    )
+    return user
+
+
+@app.post("/auth/logout")
+def logout(response: Response, session_id: str | None = Cookie(default=None)):
+    if session_id:
+        destroy_session(session_id)
+    response.delete_cookie("session_id")
+    return {"status": "logged out"}
+
+
+@app.get("/auth/me")
+def me(user: dict = Depends(get_current_user)):
+    return user
 
 
 handler = Mangum(app)
